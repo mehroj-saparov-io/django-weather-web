@@ -1,0 +1,154 @@
+/* ===== Reset ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+    color: #333;
+    min-height: 100vh;
+
+    /* Flex bilan markazlash */
+    display: flex;
+    justify-content: center; /* gorizontal o‘rtaga */
+    align-items: center;     /* vertikal o‘rtaga */
+    padding: 10px;
+}
+
+/* Agar containerning balandligi kichik bo‘lsa, u ham o‘rtada ko‘rinadi */
+.container {
+    max-width: 500px;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+
+    /* Vertikal scrollga ruxsat berish uchun */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+/* ===== Search Form ===== */
+.search-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1em;
+}
+
+.search-form button {
+    padding: 10px 15px;
+    border-radius: 0 8px 8px 0;
+    border: none;
+    background: #2193b0;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.search-form button:hover {
+    background: #6dd5ed;
+}
+
+/* ===== Error Message ===== */
+.error {
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ===== Weather Card ===== */
+.weather-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.weather-card img {
+    width: 100px;
+    height: 100px;
+}
+
+.weather-card .desc {
+    font-style: italic;
+    margin: 10px 0;
+}
+
+/* ===== Recent Searches ===== */
+.recent-searches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.search-card {
+    flex: 1 1 45%;
+    background: #f1f1f1;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.search-card:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Clear All Button ===== */
+button[name="clear_recent"] {
+    padding: 5px 10px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button[name="clear_recent"]:hover {
+    background: #ff1a1a;
+}
+
+/* ===== Responsive ===== */
+@media(max-width: 500px) {
+    .recent-searches {
+        flex-direction: column;
+    }
+
+    .search-card {
+        flex: 1 1 100%;
+    }
+
+    .search-form input, .search-form button {
+        font-size: 0.9em;
+    }
+
+    .weather-card img {
+        width: 80px;
+        height: 80px;
+    }
+}

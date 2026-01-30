@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ob-havo ilovasi</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="container">
+
+    <h1>🌤 Ob-havo ilovasi</h1>
+
+    <form method="post" class="search-form">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Shahar nomini kiriting" required>
+        <button type="submit">Qidirish</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if weather %}
+        <div class="weather-card">
+            <h2>{{ weather.city }}</h2>
+            <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Ob-havo ikonkasi">
+            <p class="desc">{{ weather.description }}</p>
+            <p>🌡 Harorat: <strong>{{ weather.temperature }}°C</strong></p>
+            <p>💧 Namlik: <strong>{{ weather.humidity }}%</strong></p>
+            <p>🔽 Bosim: <strong>{{ weather.pressure }} hPa</strong></p>
+        </div>
+    {% endif %}
+
+    {% if recent_searches %}
+        <h3>So‘nggi qidiruvlar</h3>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" name="clear_recent">Hammasini o‘chirish</button>
+        </form>
+        <div class="recent-searches">
+            {% for s in recent_searches %}
+                <div class="search-card">
+                    <p>{{ s.city_name }}</p>
+                    <p>{{ s.temperature }}°C</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
+</body>
+</html>
